@@ -2,9 +2,18 @@ name: Demo-2
 on:
   workflow_dispatch:
 jobs:
-  first_job:
+  build:
     runs-on: ubuntu-latest
     steps:
       #- uses: actions/checkout@v4
       - name: Welcome message
         run: echo "Hello, world" > hello.txt
+  
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      #- uses: actions/checkout@v4
+      - name: List file
+        run: ls
+      - name: Show file content
+        run: cat hello.txt |grep -i "Hello, world"
