@@ -29,4 +29,4 @@ jobs:
       - name: list file on repo
         run: ls
       - name: Read file
-        run: cat README.ad
+        run: cat README.md
