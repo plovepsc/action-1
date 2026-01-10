@@ -1,32 +1,19 @@
-name: Demo-2
+name: My First Workflow
 on:
-  workflow_dispatch:
+  push
 jobs:
-  build:
+  first_job:
     runs-on: ubuntu-latest
     steps:
-
-      #- uses: actions/checkout@v4
-      - name: Welcome message
-        run: echo "Hello, world" > hello.txt
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: hello-file
-          path: hello.txt
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: List and Read file
+        run: |
+          echo "My first github action job"
+          ls -ltra
+          cat README.md
+      - name: Generate ASCI Artwork
+        run: cowsay -f dragon "Run for cover, I am a DRAGON-------RAWR" >> dragon.txt
     
   
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-
-      #- uses: actions/checkout@v4
-      - uses: actions/download-artifact@v5
-        with:
-          name: hello-file
-        
-      - name: List file
-        run: ls
-      - name: Show file content
-        run: cat hello.txt |grep -i "Hello, world"
+ 
